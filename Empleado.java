@@ -1,19 +1,24 @@
-package AplicativoWeb;
+package com.example.demo;
 
 public class Empleado {
 
-        //Atributos
-        int id;
-        String nombre, perfil,rol,empresa;
+    //Atributos
+    int id;
+    String nombre;
+    String correo;
+    String empresa;
+    String rol;
 
-        //constructor
-    public Empleado(int id,String nombre,String perfil,String rol,String empresa){
-        id=this.id;
-        nombre=this.nombre;
-        perfil=this.perfil;
-        rol=this.rol;
-        empresa=this.empresa;
+    //constructor
+
+    public Empleado(int id, String nombre, String correo, String empresa, String rol) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.empresa = empresa;
+        this.rol = rol;
     }
+
     //getter and setter
     public int getId(){
         return this.id;
@@ -29,11 +34,11 @@ public class Empleado {
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
-    public String getPerfil(){
-        return  this.perfil;
+    public String getCorreo(){
+        return  this.correo;
     }
-    public void setPerfil(String perfil){
-        this.perfil=perfil;
+    public void setCorreo(String correo){
+        this.correo = correo;
     }
 
     public String getRol(){
@@ -49,9 +54,4 @@ public class Empleado {
     public void setEmpresa(){
         this.empresa=empresa;
     }
-
-
-
-
-
 }
