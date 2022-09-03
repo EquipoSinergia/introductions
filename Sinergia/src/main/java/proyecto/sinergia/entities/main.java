@@ -5,7 +5,7 @@ public class main {
 
     public static void main(String[] args) {
 
-        Empresa sinergia = new Empresa("Sinergia", "CALLE 1 32 23", "545321", "900254864");
+        Empresa sinergia = new Empresa("sinergia", "CALLE 1 32 23", "545321", "900254864", LocalDate.of(2022,8,1), LocalDate.of(2022,8,15));
 
         System.out.println("Se crea la empresa "+sinergia.getNombreEmpresa()+" ubicada en la dirección " + sinergia.getDireccionEmpresa() + "con teléfono " + sinergia.getTelefonoEmpresa()+" y tiene NIT "+sinergia.getNitEmpresa());
 

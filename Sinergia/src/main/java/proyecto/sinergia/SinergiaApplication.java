@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SinergiaApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SinergiaApplication.class, args);
 	}
 
