@@ -17,4 +17,8 @@ public class EmpresaService {
     public List<Empresa> getEmpresas(){
         return this.empresaRepository.findAll();
     }
+
+    public Empresa createEmpresa(Empresa newEmpresa){
+        return this.empresaRepository.save(newEmpresa);
+    }
 }
