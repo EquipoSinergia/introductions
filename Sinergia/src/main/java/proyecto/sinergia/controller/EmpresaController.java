@@ -34,6 +34,13 @@ public class EmpresaController {
         return this.empresaService.getEmpresaById(id);
     }
 
+    @DeleteMapping(value = "/empresas/{id}")
+    public void deleteEmpresa(@PathVariable("id") long id) {
+        empresaService.deleteEmpresa(id);
+    }
+
+
+
 
 
 

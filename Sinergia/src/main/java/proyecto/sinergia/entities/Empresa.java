@@ -1,6 +1,11 @@
 package proyecto.sinergia.entities;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.*;
@@ -23,22 +28,24 @@ public class Empresa {
     private String direccionEmpresa;
     @Column(name = "phone")
     private String telefonoEmpresa;
+    @CreatedDate
     @Column(name="createdAt")
-    private LocalDate fechaCreacion;
+    @CreationTimestamp
+    private LocalDateTime fechaCreacion;
+    @LastModifiedDate
     @Column(name="updatedAt")
-    private LocalDate fechaActualizacion;
+    @UpdateTimestamp
+    private LocalDateTime fechaActualizacion;
 
     public Empresa(){
 
     }
 
-    public Empresa(String nombreEmpresa, String nitEmpresa, String direccionEmpresa, String telefonoEmpresa, LocalDate fechaCreacion, LocalDate fechaActualizacion) {
+    public Empresa(String nombreEmpresa, String nitEmpresa, String direccionEmpresa, String telefonoEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
         this.nitEmpresa = nitEmpresa;
         this.direccionEmpresa = direccionEmpresa;
         this.telefonoEmpresa = telefonoEmpresa;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public String getNombreEmpresa() {
@@ -73,19 +80,23 @@ public class Empresa {
         this.nitEmpresa = nitEmpresa;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public LocalDate getFechaActualizacion() {
+    public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public long getId() {
+        return id;
     }
 }
