@@ -39,6 +39,11 @@ public class EmpresaController {
         empresaService.deleteEmpresa(id);
     }
 
+    @PutMapping(value = "/empresas/{id}")
+    public ResponseEntity<Empresa> updateEmpresa(@RequestBody Empresa empresa){
+        return this.empresaService.updateEmpresa(empresa);
+    }
+
 
 
 
