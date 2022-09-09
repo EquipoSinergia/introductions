@@ -1,68 +1,96 @@
 package proyecto.sinergia.entities;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "transaction")
 public class MovimientoDinero {
-    int nroTransaccion;
-    LocalDate fechaCreacionMto;
-    LocalDate fechaActualizMto;
-    String conceptoMto;
-    double montoMto;
 
-    String usuario;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "concept")
+    private String conceptoMto;
+    @Column(name = "amount")
+    private float montoMto;
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
+    @CreatedDate
+    @Column(name="createdAt")
+    @CreationTimestamp
+    private LocalDateTime fechaCreacionMto;
+    @LastModifiedDate
+    @Column(name="updatedAt")
+    @UpdateTimestamp
+    private LocalDateTime fechaActualizMto;
 
-    public MovimientoDinero(int Nrotransaccion, LocalDate fechaCreacionMto, LocalDate fechaActualizMto, String ConceptoMto, double MontoMto, String usuario){
-        this.nroTransaccion =Nrotransaccion;
-        this.fechaCreacionMto=fechaCreacionMto;
-        this.fechaActualizMto=fechaActualizMto;
-        this.conceptoMto =ConceptoMto;
-        this.montoMto =MontoMto;
-        this.usuario = usuario;
+
+    public MovimientoDinero() {
+
     }
 
-    public int getNroTransaccion(){
-        return this.nroTransaccion;
+    public MovimientoDinero(String conceptoMto, float montoMto, Employee employee, Empresa empresa) {
+        this.conceptoMto = conceptoMto;
+        this.montoMto = montoMto;
+        this.employee = employee;
+        this.empresa = empresa;
     }
 
-    public void setNroTransaccion(int Nrotransaccion) {
-        this.nroTransaccion = nroTransaccion;
+    public String getConceptoMto() {
+        return conceptoMto;
     }
 
-    public LocalDate getfechaCreacionMto(){
-        return this.fechaCreacionMto;
+    public void setConceptoMto(String conceptoMto) {
+        this.conceptoMto = conceptoMto;
     }
 
-    public void setfechaCreacionMto(LocalDate fechaCreacionMto) {
-        this.fechaCreacionMto = fechaCreacionMto;
-    }
-    public LocalDate getfechaActualizMto(){
-        return this.fechaActualizMto;
+    public float getMontoMto() {
+        return montoMto;
     }
 
-    public void setfechaActualizMto(LocalDate fechaActualizMto) {
-        this.fechaActualizMto = fechaActualizMto;
+    public void setMontoMto(float montoMto) {
+        this.montoMto = montoMto;
     }
 
-    public String getConceptoMto(){
-        return this.conceptoMto;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setConceptoMto(String ConceptoMto) {
-        this.conceptoMto = ConceptoMto;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public double getMontoMto(){
-        return this.montoMto;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setMontoMto(double MontoMto) {
-        this.montoMto = MontoMto;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public long getId() {
+        return id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public LocalDateTime getFechaCreacionMto() {
+        return fechaCreacionMto;
+    }
+
+    public LocalDateTime getFechaActualizMto() {
+        return fechaActualizMto;
     }
 }

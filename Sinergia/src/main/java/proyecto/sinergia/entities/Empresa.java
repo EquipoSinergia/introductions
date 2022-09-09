@@ -1,18 +1,19 @@
 package proyecto.sinergia.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
 import java.time.*;
+import java.util.List;
 
 
 @Entity
-@Table(name="empresas")
+@Table(name="Enterprise")
 public class Empresa {
 
 
@@ -28,6 +29,12 @@ public class Empresa {
     private String direccionEmpresa;
     @Column(name = "phone")
     private String telefonoEmpresa;
+    @JsonBackReference
+    @OneToMany(mappedBy = "empresa")
+    private List<Employee> user;
+    @JsonBackReference
+    @OneToMany(mappedBy = "empresa")
+    private List<MovimientoDinero> movimientoDinero;
     @CreatedDate
     @Column(name="createdAt")
     @CreationTimestamp
@@ -36,6 +43,7 @@ public class Empresa {
     @Column(name="updatedAt")
     @UpdateTimestamp
     private LocalDateTime fechaActualizacion;
+
 
     public Empresa(){
 
@@ -99,4 +107,16 @@ public class Empresa {
     public long getId() {
         return id;
     }
+
+    public List<Employee> getUser() {
+        return user;
+    }
+
+    public List<MovimientoDinero> getMovimientoDinero() {
+        return movimientoDinero;
+    }
+
+
+
+
 }

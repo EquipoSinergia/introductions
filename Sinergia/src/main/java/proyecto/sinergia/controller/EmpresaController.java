@@ -1,52 +1,48 @@
 package proyecto.sinergia.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Empresa;
-import proyecto.sinergia.repositories.EmpresaRepository;
 import proyecto.sinergia.services.EmpresaService;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class EmpresaController {
 
+    @Autowired
     private EmpresaService empresaService;
 
     public EmpresaController(EmpresaService empresaService){
         this.empresaService = empresaService;
     }
 
-    @GetMapping("/empresas")
+    @GetMapping("/enterprises")
     public  List<Empresa> getEmpresas(){
         return this.empresaService.getEmpresas();
     }
 
-    @PostMapping("/empresas")
+    @PostMapping("/enterprises")
     public Empresa createEmpresa(@RequestBody Empresa empresa){
         return this.empresaService.createEmpresa(empresa);
     }
 
     //Metodo para listar Empresas por su Id
-    @GetMapping("/empresas/{id}")
+    @GetMapping("/enterprises/{id}")
     public Optional<Empresa> getEmpresaById(@PathVariable("id") long id){
         return this.empresaService.getEmpresaById(id);
     }
 
-    @DeleteMapping(value = "/empresas/{id}")
+    @DeleteMapping(value = "/enterprises/{id}")
     public void deleteEmpresa(@PathVariable("id") long id) {
         empresaService.deleteEmpresa(id);
     }
 
-    @PutMapping(value = "/empresas/{id}")
+    @PutMapping(value = "/enterprises/{id}")
     public ResponseEntity<Empresa> updateEmpresa(@RequestBody Empresa empresa){
         return this.empresaService.updateEmpresa(empresa);
     }
-
-
-
-
 
 
 }
