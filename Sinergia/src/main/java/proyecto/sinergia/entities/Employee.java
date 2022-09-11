@@ -23,15 +23,15 @@ public class Employee {
     @Column(name = "email", unique = true)
     private String correo;
 
-    @JsonManagedReference
+    //@JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "empresa_id")
-    //@JsonIgnore
+    @JsonIgnore
     private Empresa empresa;
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
-    //@JsonIgnore
+    @JsonIgnore
     private List<MovimientoDinero> movimientosDinero;
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")

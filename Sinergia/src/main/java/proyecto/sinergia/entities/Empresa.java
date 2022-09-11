@@ -31,8 +31,9 @@ public class Empresa {
     @JsonIgnore
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
     private List<Employee> user;
+
+    //@JsonBackReference
     @JsonIgnore
-    @JsonBackReference
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
     private List<MovimientoDinero> movimientoDinero;
     @CreatedDate

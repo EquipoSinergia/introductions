@@ -1,4 +1,5 @@
 package proyecto.sinergia.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -24,10 +25,12 @@ public class MovimientoDinero {
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @JsonIgnore
     private Employee employee;
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "empresa_id")
+    @JsonIgnore
     private Empresa empresa;
     @CreatedDate
     @Column(name="createdAt")
