@@ -31,14 +31,12 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Enum_RoleName rol;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Profile profile;
     @CreatedDate
-    @Column(name="createdAt")
+    @Column(name="created_At")
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
     @LastModifiedDate
-    @Column(name="updatedAt")
+    @Column(name="updated_At")
     @UpdateTimestamp
     private LocalDateTime fechaActualizacion;
 
@@ -52,7 +50,6 @@ public class Employee {
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
-        this.profile = profile;
     }
 
     public String getCorreo() {
@@ -77,14 +74,6 @@ public class Employee {
 
     public void setRol(Enum_RoleName rol) {
         this.rol = rol;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public long getId() {

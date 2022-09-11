@@ -1,8 +1,13 @@
 package proyecto.sinergia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import proyecto.sinergia.entities.Employee;
 import proyecto.sinergia.services.EmployeeService;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EmployeeController {
@@ -15,7 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public  List<Employee> getEmployees(){
+    public List<Employee> getEmployees(){
         return this.employeeService.getEmployees();
     }
 

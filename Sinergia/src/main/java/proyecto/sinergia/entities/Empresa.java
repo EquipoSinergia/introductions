@@ -36,11 +36,11 @@ public class Empresa {
     @OneToMany(mappedBy = "empresa")
     private List<MovimientoDinero> movimientoDinero;
     @CreatedDate
-    @Column(name="createdAt")
+    @Column(name="created_At")
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
     @LastModifiedDate
-    @Column(name="updatedAt")
+    @Column(name="updated_At")
     @UpdateTimestamp
     private LocalDateTime fechaActualizacion;
 

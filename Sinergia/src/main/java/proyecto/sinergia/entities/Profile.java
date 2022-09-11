@@ -21,17 +21,59 @@ public class Profile {
     @Column(name = "phone")
     private String phone;
     @CreatedDate
-    @Column(name="createdAt")
+    @Column(name="created_At")
     @CreationTimestamp
     private LocalDateTime createdAt;
     @LastModifiedDate
-    @Column(name="updatedAt")
+    @Column(name="updated_At")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Employee employee;
 
     public Profile(){
 
     }
 
+    public Profile(String image, String phone, Employee employee) {
+        this.image = image;
+        this.phone = phone;
+        this.employee = employee;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

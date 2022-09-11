@@ -1,9 +1,14 @@
 package proyecto.sinergia.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import proyecto.sinergia.entities.Employee;
 import proyecto.sinergia.repositories.EmployeeRepository;
-import proyecto.sinergia.repositories.EmpresaRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -16,7 +21,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getEmployees(){
-        return this.empmployeeRepository.findAll();
+        return this.employeeRepository.findAll();
     }
 
     public Employee createEmployee(Employee newEmployee){
@@ -39,7 +44,7 @@ public class EmployeeService {
         Optional<Employee> optionalEmployee = employeeRepository.findById(employee.getId());
         if (optionalEmployee.isPresent()) {
             Employee updatedEmployee = optionalEmployee.get();
-            updatedEmployee.setcorreoEmployee(employee.getcorreoEmployee());
+            updatedEmployee.setCorreo(employee.getCorreo());
             employeeRepository.save(updatedEmployee);
             return ResponseEntity.ok(updatedEmployee);
         }else
