@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Empresa;
+import proyecto.sinergia.entities.MovimientoDinero;
 import proyecto.sinergia.services.EmpresaService;
 import java.util.List;
 import java.util.Optional;
@@ -40,9 +41,13 @@ public class EmpresaController {
     }
 
     @PutMapping(value = "/enterprises/{id}")
-    public ResponseEntity<Empresa> updateEmpresa(@RequestBody Empresa empresa){
-        return this.empresaService.updateEmpresa(empresa);
+    public ResponseEntity<Empresa> updateEmpresa(@PathVariable("id") long id, @RequestBody Empresa empresa){
+        return this.empresaService.updateEmpresa(id, empresa);
     }
 
+    /*@GetMapping("/enterprises/{id}/movements")
+    public List<MovimientoDinero> getTransactionsByEmpresaId(@PathVariable("id") long id){
+        return this.empresaService.getTransactionsByEmpresaId(id);
+    }*/
 
 }

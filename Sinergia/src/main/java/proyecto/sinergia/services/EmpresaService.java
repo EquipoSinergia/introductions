@@ -1,5 +1,6 @@
 package proyecto.sinergia.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import proyecto.sinergia.entities.Empresa;
 import proyecto.sinergia.repositories.EmpresaRepository;
+import proyecto.sinergia.repositories.MovimientoDineroRepository;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
+    @Autowired
+    private MovimientoDineroRepository movimientoDineroRepository;
 
     public EmpresaService(EmpresaRepository empresaRepository){
         this.empresaRepository = empresaRepository;
@@ -39,8 +43,8 @@ public class EmpresaService {
         empresaRepository.deleteById(empresaId);
     }
 
-    public ResponseEntity<Empresa> updateEmpresa(@RequestBody Empresa empresa){
-        Optional<Empresa> optionalEmpresa = empresaRepository.findById(empresa.getId());
+    public ResponseEntity<Empresa> updateEmpresa(@PathVariable("id") long id, @RequestBody Empresa empresa){
+        Optional<Empresa> optionalEmpresa = empresaRepository.findById(id);
         if (optionalEmpresa.isPresent()) {
             Empresa updatedEmpresa = optionalEmpresa.get();
             updatedEmpresa.setNombreEmpresa(empresa.getNombreEmpresa());
@@ -52,5 +56,15 @@ public class EmpresaService {
         }else
             return ResponseEntity.notFound().build();
     }
+
+    /*public List<MovimientoDinero> getTransactionsByEmpresaId(@PathVariable("id") long empresaId){
+        return empresaRepository.findById(empresaId).get().getMovimientoDinero();
+
+        Optional<List<MovimientoDinero>> optionalEmpresa = empresaRepository.findById(empresaId);
+        if(((java.util.Optional<List<MovimientoDinero>>) optionalEmpresa).isPresent()) {
+            return Optional.of(optionalEmpresa.get().getMovimientoDinero());
+        }else
+            return Optional.empty();*/
+
 
 }

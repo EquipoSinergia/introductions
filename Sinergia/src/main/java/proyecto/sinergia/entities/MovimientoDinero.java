@@ -1,6 +1,5 @@
 package proyecto.sinergia.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -48,7 +47,7 @@ public class MovimientoDinero {
         this.conceptoMto = conceptoMto;
         this.montoMto = montoMto;
         this.employee = employee;
-        this.empresa = empresa;
+        this.empresa = employee.getEmpresa();
     }
 
     public String getConceptoMto() {
@@ -77,10 +76,6 @@ public class MovimientoDinero {
 
     public Empresa getEmpresa() {
         return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
     }
 
     public long getId() {
