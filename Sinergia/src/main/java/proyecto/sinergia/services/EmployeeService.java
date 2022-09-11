@@ -40,11 +40,12 @@ public class EmployeeService {
         employeeRepository.deleteById(employeeId);
     }
 
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
-        Optional<Employee> optionalEmployee = employeeRepository.findById(employee.getId());
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employee_id ,@RequestBody Employee employee){
+        Optional<Employee> optionalEmployee = employeeRepository.findById(employee_id);
         if (optionalEmployee.isPresent()) {
             Employee updatedEmployee = optionalEmployee.get();
             updatedEmployee.setCorreo(employee.getCorreo());
+            updatedEmployee.setRol(employee.getRol());
             employeeRepository.save(updatedEmployee);
             return ResponseEntity.ok(updatedEmployee);
         }else

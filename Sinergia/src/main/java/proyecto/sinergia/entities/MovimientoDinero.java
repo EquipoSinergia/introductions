@@ -43,7 +43,7 @@ public class MovimientoDinero {
 
     }
 
-    public MovimientoDinero(String conceptoMto, float montoMto, Employee employee, Empresa empresa) {
+    public MovimientoDinero(String conceptoMto, float montoMto, Employee employee) {
         this.conceptoMto = conceptoMto;
         this.montoMto = montoMto;
         this.employee = employee;

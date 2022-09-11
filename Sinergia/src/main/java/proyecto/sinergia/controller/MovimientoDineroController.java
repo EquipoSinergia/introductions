@@ -33,8 +33,8 @@ public class MovimientoDineroController {
     public void deleteMovimientoDinero(@PathVariable("id") long id) {movimientoDineroService.deleteMovimientoDinero(id);}
 
     @PutMapping(value = "/transactions/{id}")
-    public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@RequestBody MovimientoDinero movimientoDinero){
-        return this.movimientoDineroService.updateMovimientoDinero(movimientoDinero);
+    public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody MovimientoDinero movimientoDinero){
+        return this.movimientoDineroService.updateMovimientoDinero(transaction_id, movimientoDinero);
     }
 
 }

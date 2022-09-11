@@ -39,8 +39,8 @@ public class EmployeeController {
     }
 
     @PutMapping(value = "/employees/{id}")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
-        return this.employeeService.updateEmployee(employee);
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employee_id, @RequestBody Employee employee){
+        return this.employeeService.updateEmployee(employee_id, employee);
     }
 
 }

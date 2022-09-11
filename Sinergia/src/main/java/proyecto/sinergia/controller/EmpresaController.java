@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Empresa;
-import proyecto.sinergia.entities.MovimientoDinero;
 import proyecto.sinergia.services.EmpresaService;
 import java.util.List;
 import java.util.Optional;

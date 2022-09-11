@@ -37,8 +37,8 @@ public class MovimientoDineroService {
     public void deleteMovimientoDinero(@PathVariable("id") long movimientoDineroId){movimientoDineroRepository.deleteById(movimientoDineroId);
     }
 
-    public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@RequestBody MovimientoDinero movimientoDinero){
-        Optional<MovimientoDinero> optionalMovimientoDinero = movimientoDineroRepository.findById(movimientoDinero.getId());
+    public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody MovimientoDinero movimientoDinero){
+        Optional<MovimientoDinero> optionalMovimientoDinero = movimientoDineroRepository.findById(transaction_id);
         if (optionalMovimientoDinero.isPresent()) {
             MovimientoDinero updatedMovimientoDinero = optionalMovimientoDinero.get();
             updatedMovimientoDinero.setConceptoMto(movimientoDinero.getConceptoMto());
