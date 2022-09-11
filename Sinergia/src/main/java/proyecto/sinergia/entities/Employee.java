@@ -1,6 +1,7 @@
 package proyecto.sinergia.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,13 +22,17 @@ public class Employee {
     private long id;
     @Column(name = "email", unique = true)
     private String correo;
+
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "empresa_id")
+    //@JsonIgnore
     private Empresa empresa;
+
     @JsonBackReference
-    @OneToMany(mappedBy = "employee")
-    private List<MovimientoDinero> movimientoDinero;
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    //@JsonIgnore
+    private List<MovimientoDinero> movimientosDinero;
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Enum_RoleName rol;
@@ -80,8 +85,8 @@ public class Employee {
         return id;
     }
 
-    public List<MovimientoDinero> getMovimientoDinero() {
-        return movimientoDinero;
+    public List<MovimientoDinero> getMovimientosDinero() {
+        return movimientosDinero;
     }
 
     public LocalDateTime getFechaCreacion() {

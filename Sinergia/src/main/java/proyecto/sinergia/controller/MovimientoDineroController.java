@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.MovimientoDinero;
 import proyecto.sinergia.services.MovimientoDineroService;
-
 import java.util.List;
 import java.util.Optional;
 

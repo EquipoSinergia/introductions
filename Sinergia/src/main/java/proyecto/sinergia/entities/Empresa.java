@@ -1,10 +1,9 @@
 package proyecto.sinergia.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
@@ -29,11 +28,12 @@ public class Empresa {
     private String direccionEmpresa;
     @Column(name = "phone")
     private String telefonoEmpresa;
-    @JsonBackReference
-    @OneToMany(mappedBy = "empresa")
+    @JsonIgnore
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
     private List<Employee> user;
+    @JsonIgnore
     @JsonBackReference
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
     private List<MovimientoDinero> movimientoDinero;
     @CreatedDate
     @Column(name="created_At")

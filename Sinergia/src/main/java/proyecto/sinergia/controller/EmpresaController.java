@@ -24,8 +24,8 @@ public class EmpresaController {
     }
 
     @PostMapping("/enterprises")
-    public Empresa createEmpresa(@RequestBody Empresa empresa){
-        return this.empresaService.createEmpresa(empresa);
+    public void createEmpresa(@RequestBody Empresa empresa){
+        empresaService.createEmpresa(empresa);
     }
 
     //Metodo para listar Empresas por su Id

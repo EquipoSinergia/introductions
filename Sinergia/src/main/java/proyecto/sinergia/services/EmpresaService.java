@@ -23,8 +23,8 @@ public class EmpresaService {
         return this.empresaRepository.findAll();
     }
 
-    public Empresa createEmpresa(Empresa newEmpresa){
-        return this.empresaRepository.save(newEmpresa);
+    public void createEmpresa(Empresa empresa){
+        empresaRepository.save(empresa);
     }
 
     public Optional<Empresa> getEmpresaById(@PathVariable("id") long empresaId){
