@@ -1,13 +1,11 @@
 package proyecto.sinergia.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,22 +20,22 @@ public class MovimientoDinero {
     private String conceptoMto;
     @Column(name = "amount")
     private float montoMto;
-    @JsonManagedReference
+    //@JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Employee employee;
-    @JsonManagedReference
+    //@JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "empresa_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Empresa empresa;
     @CreatedDate
-    @Column(name="createdAt")
+    @Column(name="created_At")
     @CreationTimestamp
     private LocalDateTime fechaCreacionMto;
     @LastModifiedDate
-    @Column(name="updatedAt")
+    @Column(name="updated_At")
     @UpdateTimestamp
     private LocalDateTime fechaActualizMto;
 
