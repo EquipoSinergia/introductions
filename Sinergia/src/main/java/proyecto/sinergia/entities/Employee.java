@@ -1,8 +1,6 @@
 package proyecto.sinergia.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -26,7 +24,7 @@ public class Employee {
     //@JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "empresa_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Empresa empresa;
 
     //@JsonBackReference
@@ -51,7 +49,7 @@ public class Employee {
 
     }
 
-    public Employee(String correo, Empresa empresa, Enum_RoleName rol, Profile profile) {
+    public Employee(String correo, Empresa empresa, Enum_RoleName rol) {
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
