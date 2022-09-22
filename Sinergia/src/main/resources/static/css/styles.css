@@ -1,0 +1,168 @@
+h1{
+  color:black;
+}
+
+body {
+  background-color: #FA8072;
+  }
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 100px ;
+  grid-template-columns: 30px;
+  grid-gap: 2px;
+}
+
+.grid-item1 {
+  background: blue;
+  text-align: center;
+  border: black 7px solid;
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+* {
+margin:0;
+padding:0;
+}
+#columna1 {
+top:0px;
+left:0px;
+width:220px;
+margin-top:120px;
+ grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 7;
+   border: black 7px solid;
+ }
+
+#columna2 {
+top:0px;
+left:0px;
+width:180px;
+margin-top:120px;
+grid-column-start: 3;
+grid-column-end: 3;
+grid-row-start: 3;
+grid-row-end: 3;
+border: black 7px solid;
+background: blue;
+}
+#columna3 {
+top:0px;
+left:0px;
+width:180px;
+margin-top:120px;
+grid-column-start: 4;
+grid-column-end: 4;
+grid-row-start: 3;
+grid-row-end: 3;
+border: black 7px solid;
+background: blue;
+}
+
+#columna4 {
+top:0px;
+left:0px;
+width:180px;
+margin-top:120px;
+grid-column-start: 5;
+grid-column-end: 5;
+grid-row-start: 3;
+grid-row-end: 3;
+border: black 7px solid;
+background: blue;
+}
+
+article.article_login-index{
+  height: 480px;
+  max-width: 100%;
+  padding: 5px 100px;
+  margin: auto 250px;
+}
+
+article.article_register-index{
+  height: 700px;
+  max-width: 100%;
+  padding: 5px 100px;
+  margin: auto 250px;
+}
+
+
+section.section_login-index{
+  width: 400px;
+  height: 400px;
+  background-color: #4e4d4d;
+  margin-left: 145px;
+  margin-top: 50px;
+  box-shadow: 7px 13px 37px #000;
+  padding: 20px 30px;
+  border-top: 4px solid #2eb086;
+  color: #fff;
+  border-radius: 5px;
+}
+
+section.section_register-index{
+  width: 400px;
+  height: 630px;
+  background-color: #4e4d4d;
+  margin-left: 145px;
+  margin-top: 50px;
+  box-shadow: 7px 13px 37px #000;
+  padding: 20px 30px;
+  border-top: 4px solid #2eb086;
+  color: #fff;
+  border-radius: 5px;
+}
+
+
+section.section_login-index h5, section.section_register-index h5 {
+  margin: 0;
+  text-align: center;
+  height: 40px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid white;
+  font-size: 20px;
+}
+
+input.input_login-index, input.input_register-index{
+  width: 100%;
+  border: 1px solid #2eb086;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background: #252323;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2eb086;
+}
+
+input.button_login-index, input.button_register-index {
+  width: 100%;
+  height: 40px;
+  background: #2eb086;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+}
+
+section.section_login-index p{
+  height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+}
+
+section.section_login-index a{
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+section.section_login-index a:hover{
+  text-decoration: underline;
+}
+
+input.button_login-index:hover, input.button_register-index:hover{
+  background-color: #ffb319;}
