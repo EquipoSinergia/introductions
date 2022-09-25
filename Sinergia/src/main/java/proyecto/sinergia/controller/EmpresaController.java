@@ -1,14 +1,15 @@
 package proyecto.sinergia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Empresa;
 import proyecto.sinergia.services.EmpresaService;
-import java.util.List;
+
 import java.util.Optional;
 
-@RestController
+@Controller
 public class EmpresaController {
 
     @Autowired
@@ -19,29 +20,46 @@ public class EmpresaController {
     }
 
     @GetMapping("/enterprises")
-    public  List<Empresa> getEmpresas(){
-        return this.empresaService.getEmpresas();
+    public String getEmpresas(Model model){
+        model.addAttribute("empresas", empresaService.getEmpresas());
+        return "enterprises";
+    }
+
+    @GetMapping("/agregar-empresa")
+    public String formularioCrearEmpresa(Empresa empresa){
+        return "agregar-empresa";
     }
 
     @PostMapping("/enterprises")
-    public void createEmpresa(@RequestBody Empresa empresa){
+    public String createEmpresa(Empresa empresa){
         empresaService.createEmpresa(empresa);
+        return "redirect:/enterprises";
     }
 
+    @GetMapping("/enterprises/eliminar/{id}")
+    public String deleteEmpresa(@PathVariable("id") long id) {
+        empresaService.deleteEmpresa(id);
+        return "redirect:/enterprises";
+    }
+
+    @GetMapping("/enterprises/editar/{id}")
+    public String editarEmpresa(@PathVariable("id") long id, Model model) {
+        Empresa empresa = empresaService.getEmpresaById(id);
+        model.addAttribute("empresa", empresa);
+        return "editar-empresa";
+    }
+
+    @PostMapping("/enterprises/actualizar/{id}")
+    public String updateEmpresa(@PathVariable("id") long id, Empresa empresa) {
+        empresaService.updateEmpresa(id, empresa);
+        return "redirect:/enterprises";
+    }
+
+    /*
     //Metodo para listar Empresas por su Id
     @GetMapping("/enterprises/{id}")
     public Optional<Empresa> getEmpresaById(@PathVariable("id") long id){
         return this.empresaService.getEmpresaById(id);
-    }
-
-    @DeleteMapping(value = "/enterprises/{id}")
-    public void deleteEmpresa(@PathVariable("id") long id) {
-        empresaService.deleteEmpresa(id);
-    }
-
-    @PutMapping(value = "/enterprises/{id}")
-    public ResponseEntity<Empresa> updateEmpresa(@PathVariable("id") long id, @RequestBody Empresa empresa){
-        return this.empresaService.updateEmpresa(id, empresa);
     }
 
     /*@GetMapping("/enterprises/{id}/movements")

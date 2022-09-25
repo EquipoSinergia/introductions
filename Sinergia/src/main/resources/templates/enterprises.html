@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Empresas</title>
+</head>
+<body>
+ Esta será la página para ver las empresas
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Nit</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <tr th:each="empresa : ${empresas}">
+            <td th:text="${empresa.nombreEmpresa}"></td>
+            <td th:text="${empresa.nitEmpresa}"></td>
+            <td th:text="${empresa.direccionEmpresa}"></td>
+            <td th:text="${empresa.telefonoEmpresa}"></td>
+            <td><a th:href="@{/enterprises/editar/{id} (id = ${empresa.id})}">✍</a></td>
+            <td><a th:href="@{/enterprises/eliminar/{id} (id = ${empresa.id})}">🗑</a></td>
+        </tr>
+    </table>
+    <a href="/agregar-empresa">Agregar</a>
+</body>
+</html>

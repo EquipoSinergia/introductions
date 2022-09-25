@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Agregar Empresa</title>
+</head>
+<body>
+  <form th:action="@{/enterprises}" method="post">
+    <label for="nombre">Razón Social</label>
+    <input type="text" id="nombre" th:field="${empresa.nombreEmpresa}">
+    <label for="nit">Nit</label>
+    <input type="text" id="nit" th:field="${empresa.nitEmpresa}">
+    <label for="direccion">Dirección</label>
+    <input type="text" id="direccion" th:field="${empresa.direccionEmpresa}">
+    <label for="telefono">Teléfono</label>
+    <input type="text" id="telefono" th:field="${empresa.telefonoEmpresa}">
+
+    <input type="submit" value="Crear Empresa">
+
+  </form>
+
+</body>
+</html>

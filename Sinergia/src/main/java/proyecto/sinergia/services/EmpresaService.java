@@ -31,12 +31,8 @@ public class EmpresaService {
         empresaRepository.save(empresa);
     }
 
-    public Optional<Empresa> getEmpresaById(@PathVariable("id") long empresaId){
-        java.util.Optional<Empresa> optionalEmpresa = empresaRepository.findById(empresaId);
-        if(((java.util.Optional<Empresa>) optionalEmpresa).isPresent()) {
-            return Optional.of(optionalEmpresa.get());
-        }else
-            return Optional.empty();
+    public Empresa getEmpresaById(@PathVariable("id") long empresaId){
+        return empresaRepository.findById(empresaId).get();
     }
 
     public void deleteEmpresa(@PathVariable("id") long empresaId){
