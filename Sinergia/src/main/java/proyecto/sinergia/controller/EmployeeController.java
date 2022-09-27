@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Employee;
+import proyecto.sinergia.entities.Empresa;
 import proyecto.sinergia.services.EmployeeService;
 import java.util.List;
 import java.util.Optional;
@@ -26,11 +27,19 @@ public class EmployeeController {
         return "employees";
     }
 
-    /*
+    @GetMapping("/agregar-empleado")
+    public String formularioCrearEmpresa(Employee employee){
+        return "agregar-empleado";
+    }
+
 
     @PostMapping("/employees")
-    public Employee createEmployee(@RequestBody Employee employee){return this.employeeService.createEmployee(employee);
+    public String createEmployee(Employee employee){
+        employeeService.createEmployee(employee);
+        return "redirect:/employees";
     }
+
+    /*
 
     //Metodo para listar Empleados por su Id
     @GetMapping("/employees/{id}")
