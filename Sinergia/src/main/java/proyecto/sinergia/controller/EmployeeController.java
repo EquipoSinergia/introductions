@@ -2,13 +2,15 @@ package proyecto.sinergia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.Employee;
 import proyecto.sinergia.services.EmployeeService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class EmployeeController {
 
     @Autowired
@@ -19,9 +21,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public List<Employee> getEmployees(){
-        return this.employeeService.getEmployees();
+    public String getEmployees(Model model){
+        model.addAttribute("employees", employeeService.getEmployees());
+        return "employees";
     }
+
+    /*
 
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee){return this.employeeService.createEmployee(employee);
@@ -42,5 +47,5 @@ public class EmployeeController {
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employee_id, @RequestBody Employee employee){
         return this.employeeService.updateEmployee(employee_id, employee);
     }
-
+    */
 }

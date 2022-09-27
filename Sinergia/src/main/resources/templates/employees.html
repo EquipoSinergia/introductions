@@ -5,9 +5,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Empleados</title>
 </head>
 <body>
-
+Esta va a ser la página para ver los empleados
+<table>
+    <tr>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Empresa</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.correo}"></td>
+        <td th:text="${employee.rol}"></td>
+        <td th:text="${employee.empresa.nombreEmpresa}"></td>
+        <td><a th:href="@{/enterprises/editar/{id} (id = ${employee.id})}">✍</a></td>
+        <td><a th:href="@{/enterprises/eliminar/{id} (id = ${employee.id})}">🗑</a></td>
+    </tr>
+</table>
+<a href="/agregar-empleado">Agregar Empleado</a>
 </body>
 </html>
