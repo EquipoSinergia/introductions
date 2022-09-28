@@ -39,6 +39,12 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    @GetMapping(value = "/employees/eliminar/{id}")
+    public String deleteEmployee(@PathVariable("id") long id) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/employees";
+    }
+
     /*
 
     //Metodo para listar Empleados por su Id
@@ -47,10 +53,7 @@ public class EmployeeController {
         return this.employeeService.getEmployeeById(id);
     }
 
-    @DeleteMapping(value = "/employees/{id}")
-    public void deleteEmployee(@PathVariable("id") long id) {
-        employeeService.deleteEmployee(id);
-    }
+
 
     @PutMapping(value = "/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employee_id, @RequestBody Employee employee){

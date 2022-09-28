@@ -21,8 +21,8 @@ Esta va a ser la página para ver los empleados
         <td th:text="${employee.correo}"></td>
         <td th:text="${employee.rol}"></td>
         <td th:text="${employee.empresa.nombreEmpresa}"></td>
-        <td><a th:href="@{/enterprises/editar/{id} (id = ${employee.id})}">✍</a></td>
-        <td><a th:href="@{/enterprises/eliminar/{id} (id = ${employee.id})}">🗑</a></td>
+        <td><a th:href="@{/employees/editar/{id} (id = ${employee.id})}">✍</a></td>
+        <td><a th:href="@{/employees/eliminar/{id} (id = ${employee.id})}">🗑</a></td>
     </tr>
 </table>
 <a href="/agregar-empleado">Agregar Empleado</a>

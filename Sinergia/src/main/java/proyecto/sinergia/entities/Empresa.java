@@ -29,12 +29,12 @@ public class Empresa {
     @Column(name = "phone")
     private String telefonoEmpresa;
     @JsonIgnore
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "empresa", orphanRemoval = true, cascade = {CascadeType.ALL})
     private List<Employee> user;
 
     //@JsonBackReference
     @JsonIgnore
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "empresa", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<MovimientoDinero> movimientoDinero;
     @CreatedDate
     @Column(name="created_At")

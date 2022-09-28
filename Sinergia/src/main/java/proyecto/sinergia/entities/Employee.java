@@ -21,13 +21,13 @@ public class Employee {
     private String correo;
 
     //@JsonManagedReference
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "empresa_id")
     //@JsonIgnore
     private Empresa empresa;
 
     //@JsonBackReference
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<MovimientoDinero> movimientosDinero;
     @Enumerated(EnumType.STRING)
@@ -48,10 +48,10 @@ public class Employee {
 
     }
 
-    public Employee(String correo, Empresa empresa, Enum_RoleName rol) {
+    public Employee(String correo, Enum_RoleName rol, Empresa empresa) {
         this.correo = correo;
-        this.empresa = empresa;
         this.rol = rol;
+        this.empresa = empresa;
     }
 
     public String getCorreo() {

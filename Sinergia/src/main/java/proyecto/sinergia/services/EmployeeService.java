@@ -24,16 +24,12 @@ public class EmployeeService {
         return this.employeeRepository.findAll();
     }
 
-    public Employee createEmployee(Employee newEmployee){
-        return this.employeeRepository.save(newEmployee);
+    public void createEmployee(Employee newEmployee){
+        employeeRepository.save(newEmployee);
     }
 
-    public Optional<Employee> getEmployeeById(@PathVariable("id") long employeeId){
-        java.util.Optional<Employee> optionalEmployee = employeeRepository.findById(employeeId);
-        if(((java.util.Optional<Employee>) optionalEmployee).isPresent()) {
-            return Optional.of(optionalEmployee.get());
-        }else
-            return Optional.empty();
+    public Employee getEmployeeById(@PathVariable("id") long employeeId){
+        return employeeRepository.findById(employeeId).get();
     }
 
     public void deleteEmployee(@PathVariable("id") long employeeId){
