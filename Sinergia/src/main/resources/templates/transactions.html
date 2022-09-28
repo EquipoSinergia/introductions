@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Empresas</title>
+</head>
+<body>
+Esta será la página para ver las Transacciones
+<table>
+    <tr>
+        <th>Concepto</th>
+        <th>Valor</th>
+        <th>Empleado</th>
+        <th>Empresa</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.conceptoMto}"></td>
+        <td th:text="${transaction.montoMto}"></td>
+        <td th:text="${transaction.employee.correo}"></td>
+        <td th:text="${transaction.employee.empresa.nombreEmpresa}"></td>
+        <td><a th:href="@{/transactions/editar/{id} (id = ${transaction.id})}">✍</a></td>
+        <td><a th:href="@{/transactions/eliminar/{id} (id = ${transaction.id})}">🗑</a></td>
+    </tr>
+</table>
+<a href="/nuevo-movimiento">Agregar</a>
+</body>
+</html>

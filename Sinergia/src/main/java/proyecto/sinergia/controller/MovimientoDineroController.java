@@ -2,13 +2,15 @@ package proyecto.sinergia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import proyecto.sinergia.entities.MovimientoDinero;
 import proyecto.sinergia.services.MovimientoDineroService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class MovimientoDineroController {
 
     @Autowired
@@ -17,8 +19,12 @@ public class MovimientoDineroController {
     public MovimientoDineroController(MovimientoDineroService movimientoDineroService){this.movimientoDineroService = movimientoDineroService;}
 
     @GetMapping("/transactions")
-    public List<MovimientoDinero> getmovimientoDineros(){return this.movimientoDineroService.getMovimientoDineros();}
+    public String getmovimientoDineros(Model model){
+        model.addAttribute("transactions", movimientoDineroService.getMovimientoDineros());
+        return "transactions";
+    }
 
+    /*
     @PostMapping("/transactions")
     public MovimientoDinero createMovimientoDinero(@RequestBody MovimientoDinero movimientoDinero){return this.movimientoDineroService.createMovimientoDinero(movimientoDinero);
     }
@@ -36,5 +42,7 @@ public class MovimientoDineroController {
     public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody MovimientoDinero movimientoDinero){
         return this.movimientoDineroService.updateMovimientoDinero(transaction_id, movimientoDinero);
     }
+
+     */
 
 }

@@ -25,10 +25,10 @@ public class MovimientoDinero {
     //@JsonIgnore
     private Employee employee;
     //@JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
+    //@ManyToOne
+    //@JoinColumn(name = "empresa_id")
     //@JsonIgnore
-    private Empresa empresa;
+    //private Empresa empresa;
     @CreatedDate
     @Column(name="created_At")
     @CreationTimestamp
@@ -47,7 +47,7 @@ public class MovimientoDinero {
         this.conceptoMto = conceptoMto;
         this.montoMto = montoMto;
         this.employee = employee;
-        this.empresa = employee.getEmpresa();
+        //this.empresa = employee.getEmpresa();
     }
 
     public String getConceptoMto() {
@@ -74,9 +74,9 @@ public class MovimientoDinero {
         this.employee = employee;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
+    //public Empresa getEmpresa() {
+    //    return empresa;
+    //}
 
     public long getId() {
         return id;
