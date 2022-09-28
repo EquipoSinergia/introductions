@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import proyecto.sinergia.entities.Empresa;
 import proyecto.sinergia.entities.MovimientoDinero;
 import proyecto.sinergia.services.MovimientoDineroService;
 import java.util.List;
@@ -24,10 +25,19 @@ public class MovimientoDineroController {
         return "transactions";
     }
 
-    /*
-    @PostMapping("/transactions")
-    public MovimientoDinero createMovimientoDinero(@RequestBody MovimientoDinero movimientoDinero){return this.movimientoDineroService.createMovimientoDinero(movimientoDinero);
+    @GetMapping("/agregar-transaction")
+    public String formularioCrearTransaction(MovimientoDinero movimientoDinero){
+        return "agregar-transaction";
     }
+
+
+    @PostMapping("/transactions")
+    public String createMovimientoDinero(MovimientoDinero movimientoDinero){
+        movimientoDineroService.createMovimientoDinero(movimientoDinero);
+        return "redirect:/transactions";
+    }
+
+    /*
 
     //Metodo para listar Movimiento de dinero por su Id
     @GetMapping("/transactions/{id}")

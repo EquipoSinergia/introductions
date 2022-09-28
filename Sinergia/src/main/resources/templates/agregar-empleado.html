@@ -12,12 +12,12 @@
     <label for="mail">Email</label>
     <input type="email" id="mail" th:field="${employee.correo}">
     <label for="rol">Rol</label>
-    <select name="color">
+    <select name="rol">
         <option th:each="rolOpt : ${T(proyecto.sinergia.entities.Enum_RoleName).values()}"
-                th:value="${rolOpt}" th:text="${rolOpt}" id="rol" th:field="${employee.rol}"></option>
+               th:value="${rolOpt}" th:text="${rolOpt}" id="rol" th:field="${employee.rol}"></option>
     </select>
     <label for="empresaID">Empresa</label>
-    <input type="number" id="empresaID" th:field="${employee.empresa.id}">
+    <input type="number" id="empresaID" th:field="${employee.empresa}">
 
     <input type="submit" value="Crear Empleado">
 

@@ -23,7 +23,8 @@ public class MovimientoDineroService {
         return this.movimientoDineroRepository.findAll();
     }
 
-    public MovimientoDinero createMovimientoDinero(MovimientoDinero newMovimientoDinero){return this.movimientoDineroRepository.save(newMovimientoDinero);
+    public void createMovimientoDinero(MovimientoDinero newMovimientoDinero){
+        movimientoDineroRepository.save(newMovimientoDinero);
     }
 
     public Optional<MovimientoDinero> getMovimientoDineroById(@PathVariable("id") long movimientoDineroId){
