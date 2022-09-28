@@ -27,7 +27,7 @@ public class Employee {
     private Empresa empresa;
 
     //@JsonBackReference
-    @OneToMany(mappedBy = "employee", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<MovimientoDinero> movimientosDinero;
     @Enumerated(EnumType.STRING)
@@ -82,6 +82,10 @@ public class Employee {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public List<MovimientoDinero> getMovimientosDinero() {
         return movimientosDinero;
     }
@@ -93,4 +97,6 @@ public class Employee {
     public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
+
+
 }

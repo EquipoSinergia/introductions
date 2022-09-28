@@ -45,15 +45,21 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
-    /*
+    @GetMapping("/employees/editar/{id}")
+    public String getEmployeeById(@PathVariable("id") long id, Model model){
+        Employee employee = employeeService.getEmployeeById(id);
+        model.addAttribute("employees", employee);
+        return "editar-empleado";
+    }
 
-    //Metodo para listar Empleados por su Id
-    @GetMapping("/employees/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable("id") long id){
-        return this.employeeService.getEmployeeById(id);
+    @PostMapping("/employees/actualizar/{id}")
+    public String updateEmpleado(@PathVariable("id") long id, Employee employee){
+        employeeService.createEmployee(employee);
+        return "redirect:/employees";
     }
 
 
+    /*
 
     @PutMapping(value = "/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employee_id, @RequestBody Employee employee){
