@@ -23,8 +23,8 @@ Esta será la página para ver las Transacciones
         <td th:text="${transaction.montoMto}"></td>
         <td th:text="${transaction.employee.correo}"></td>
         <td th:text="${transaction.employee.empresa.nombreEmpresa}"></td>
-        <td><a th:href="@{/transaction/editar/{id} (id = ${transaction.id})}">✍</a></td>
-        <td><a th:href="@{/transaction/eliminar/{id} (id = ${transaction.id})}">🗑</a></td>
+        <td><a th:href="@{/transactions/editar/{id} (id = ${transaction.id})}">✍</a></td>
+        <td><a th:href="@{/transactions/eliminar/{id} (id = ${transaction.id})}">🗑</a></td>
     </tr>
 </table>
 <a href="/agregar-transaction">Agregar</a>

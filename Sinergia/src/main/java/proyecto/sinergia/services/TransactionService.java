@@ -19,11 +19,11 @@ public class TransactionService {
 
     public TransactionService(TransactionRepository transactionRepository){this.transactionRepository = transactionRepository;}
 
-    public List<Transaction> getMovimientoDineros(){
+    public List<Transaction> getTransaction(){
         return this.transactionRepository.findAll();
     }
 
-    public void createMovimientoDinero(Transaction newTransaction){
+    public void createTransaction(Transaction newTransaction){
         transactionRepository.save(newTransaction);
     }
 
@@ -35,8 +35,8 @@ public class TransactionService {
             return Optional.empty();
     }
 
-    public void deleteMovimientoDinero(@PathVariable("id") long movimientoDineroId){
-        transactionRepository.deleteById(movimientoDineroId);
+    public void deleteTransaction(@PathVariable("id") long transactionId){
+        transactionRepository.deleteById(transactionId);
     }
 
     public ResponseEntity<Transaction> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody Transaction transaction){

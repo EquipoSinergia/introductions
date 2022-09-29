@@ -16,8 +16,8 @@ public class TransactionController {
     public TransactionController(TransactionService transactionService){this.transactionService = transactionService;}
 
     @GetMapping("/transactions")
-    public String getmovimientoDineros(Model model){
-        model.addAttribute("transactions", transactionService.getMovimientoDineros());
+    public String getTransations(Model model){
+        model.addAttribute("transactions", transactionService.getTransaction());
         return "transactions";
     }
 
@@ -29,7 +29,13 @@ public class TransactionController {
 
     @PostMapping("/transactions")
     public String createMovimientoDinero(Transaction transaction){
-        transactionService.createMovimientoDinero(transaction);
+        transactionService.createTransaction(transaction);
+        return "redirect:/transactions";
+    }
+
+    @GetMapping(value = "/transactions/eliminar/{id}")
+    public String deleteTransaction(@PathVariable("id") long id) {
+        transactionService.deleteTransaction(id);
         return "redirect:/transactions";
     }
 
@@ -41,8 +47,7 @@ public class TransactionController {
         return this.movimientoDineroService.getMovimientoDineroById(id);
     }
 
-    @DeleteMapping(value = "/transactions/{id}")
-    public void deleteMovimientoDinero(@PathVariable("id") long id) {movimientoDineroService.deleteMovimientoDinero(id);}
+
 
     @PutMapping(value = "/transactions/{id}")
     public ResponseEntity<Transaction> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody Transaction movimientoDinero){

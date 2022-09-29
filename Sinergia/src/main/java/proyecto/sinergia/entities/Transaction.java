@@ -30,7 +30,7 @@ public class Transaction {
     //@JsonIgnore
     //private Empresa empresa;
     @CreatedDate
-    @Column(name="created_At")
+    @Column(name="created_At", updatable = false)
     @CreationTimestamp
     private LocalDateTime fechaCreacionMto;
     @LastModifiedDate

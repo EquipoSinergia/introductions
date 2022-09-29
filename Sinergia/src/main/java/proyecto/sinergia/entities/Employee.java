@@ -34,7 +34,7 @@ public class Employee {
     @Column(name = "rol")
     private Enum_RoleName rol;
     @CreatedDate
-    @Column(name="created_At")
+    @Column(name="created_At", updatable = false)
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
     @LastModifiedDate

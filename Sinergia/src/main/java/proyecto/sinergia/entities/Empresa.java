@@ -37,7 +37,7 @@ public class Empresa {
     //@OneToMany(mappedBy = "empresa", orphanRemoval = true, cascade = CascadeType.ALL)
     //private List<Transaction> movimientoDinero;
     @CreatedDate
-    @Column(name="created_At")
+    @Column(name="created_At", updatable = false)
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
     @LastModifiedDate
