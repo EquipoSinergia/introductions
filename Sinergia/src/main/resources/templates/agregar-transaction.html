@@ -10,11 +10,11 @@
 <body>
 <form th:action="@{/transactions}" method="post">
     <label for="concepto">Concepto</label>
-    <input type="text" id="concepto" th:field="${movimientodinero.conceptoMto}">
+    <input type="text" id="concepto" th:field="${transaction.conceptoMto}">
     <label for="monto">Monto</label>
-    <input type="number" step="any" id="monto" th:field="${movimientodinero.montoMto}">
+    <input type="number" step="any" id="monto" th:field="${transaction.montoMto}">
     <label for="empleadoID">Empleado</label>
-    <input type="number" id="empleadoID" th:field="${movimientodinero.employee}">
+    <input type="number" id="empleadoID" th:field="${transaction.employee}">
 
     <input type="submit" value="Crear Transaccion">
 

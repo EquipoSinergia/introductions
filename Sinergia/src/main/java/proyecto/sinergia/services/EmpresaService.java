@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import proyecto.sinergia.entities.Empresa;
 import proyecto.sinergia.repositories.EmpresaRepository;
-import proyecto.sinergia.repositories.MovimientoDineroRepository;
+import proyecto.sinergia.repositories.TransactionRepository;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
     @Autowired
-    private MovimientoDineroRepository movimientoDineroRepository;
+    private TransactionRepository transactionRepository;
 
     public EmpresaService(EmpresaRepository empresaRepository){
         this.empresaRepository = empresaRepository;
@@ -53,11 +53,11 @@ public class EmpresaService {
             return ResponseEntity.notFound().build();
     }
 
-    /*public List<MovimientoDinero> getTransactionsByEmpresaId(@PathVariable("id") long empresaId){
+    /*public List<Transaction> getTransactionsByEmpresaId(@PathVariable("id") long empresaId){
         return empresaRepository.findById(empresaId).get().getMovimientoDinero();
 
-        Optional<List<MovimientoDinero>> optionalEmpresa = empresaRepository.findById(empresaId);
-        if(((java.util.Optional<List<MovimientoDinero>>) optionalEmpresa).isPresent()) {
+        Optional<List<Transaction>> optionalEmpresa = empresaRepository.findById(empresaId);
+        if(((java.util.Optional<List<Transaction>>) optionalEmpresa).isPresent()) {
             return Optional.of(optionalEmpresa.get().getMovimientoDinero());
         }else
             return Optional.empty();*/

@@ -63,7 +63,7 @@ public class EmpresaController {
     }
 
     /*@GetMapping("/enterprises/{id}/movements")
-    public List<MovimientoDinero> getTransactionsByEmpresaId(@PathVariable("id") long id){
+    public List<Transaction> getTransactionsByEmpresaId(@PathVariable("id") long id){
         return this.empresaService.getTransactionsByEmpresaId(id);
     }*/
 

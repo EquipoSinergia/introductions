@@ -13,7 +13,7 @@ public class main {
 
         System.out.println("El empleado con id "+juanperez.getId()+" se llama "+juanperez.getNombre()+", su correo electrónico es: "+juanperez.getCorreo()+" pertenece a la empresa "+juanperez.getEmpresa()+" con el rol "+juanperez.getRol());
 
-        MovimientoDinero transaccion1 = new MovimientoDinero (1, LocalDate.of(2022, 8, 24), LocalDate.of(2022, 8, 26), "pagoAgosto", 545000,"juan.perez");
+        Transaction transaccion1 = new Transaction (1, LocalDate.of(2022, 8, 24), LocalDate.of(2022, 8, 26), "pagoAgosto", 545000,"juan.perez");
 
         System.out.println("fecha de creacion "+ transaccion1.getfechaCreacionMto());*/
 

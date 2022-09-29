@@ -35,7 +35,7 @@ public class Empresa {
     //@JsonBackReference
     //@JsonIgnore
     //@OneToMany(mappedBy = "empresa", orphanRemoval = true, cascade = CascadeType.ALL)
-    //private List<MovimientoDinero> movimientoDinero;
+    //private List<Transaction> movimientoDinero;
     @CreatedDate
     @Column(name="created_At")
     @CreationTimestamp
@@ -113,7 +113,7 @@ public class Empresa {
         return user;
     }
 
-    //public List<MovimientoDinero> getMovimientoDinero() {
+    //public List<Transaction> getMovimientoDinero() {
     //    return movimientoDinero;
     //}
 

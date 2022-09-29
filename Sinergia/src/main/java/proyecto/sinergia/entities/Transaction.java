@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transaction")
-public class MovimientoDinero {
+public class Transaction {
 
     @Id
     @Column(name = "id")
@@ -39,11 +39,11 @@ public class MovimientoDinero {
     private LocalDateTime fechaActualizMto;
 
 
-    public MovimientoDinero() {
+    public Transaction() {
 
     }
 
-    public MovimientoDinero(String conceptoMto, float montoMto, Employee employee) {
+    public Transaction(String conceptoMto, float montoMto, Employee employee) {
         this.conceptoMto = conceptoMto;
         this.montoMto = montoMto;
         this.employee = employee;

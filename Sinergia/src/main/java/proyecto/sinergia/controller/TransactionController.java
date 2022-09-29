@@ -1,39 +1,35 @@
 package proyecto.sinergia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import proyecto.sinergia.entities.Empresa;
-import proyecto.sinergia.entities.MovimientoDinero;
-import proyecto.sinergia.services.MovimientoDineroService;
-import java.util.List;
-import java.util.Optional;
+import proyecto.sinergia.entities.Transaction;
+import proyecto.sinergia.services.TransactionService;
 
 @Controller
-public class MovimientoDineroController {
+public class TransactionController {
 
     @Autowired
-    private MovimientoDineroService movimientoDineroService;
+    private TransactionService transactionService;
 
-    public MovimientoDineroController(MovimientoDineroService movimientoDineroService){this.movimientoDineroService = movimientoDineroService;}
+    public TransactionController(TransactionService transactionService){this.transactionService = transactionService;}
 
     @GetMapping("/transactions")
     public String getmovimientoDineros(Model model){
-        model.addAttribute("transactions", movimientoDineroService.getMovimientoDineros());
+        model.addAttribute("transactions", transactionService.getMovimientoDineros());
         return "transactions";
     }
 
     @GetMapping("/agregar-transaction")
-    public String formularioCrearTransaction(MovimientoDinero movimientoDinero){
+    public String formularioCrearTransaction(Transaction transaction){
         return "agregar-transaction";
     }
 
 
     @PostMapping("/transactions")
-    public String createMovimientoDinero(MovimientoDinero movimientoDinero){
-        movimientoDineroService.createMovimientoDinero(movimientoDinero);
+    public String createMovimientoDinero(Transaction transaction){
+        transactionService.createMovimientoDinero(transaction);
         return "redirect:/transactions";
     }
 
@@ -41,7 +37,7 @@ public class MovimientoDineroController {
 
     //Metodo para listar Movimiento de dinero por su Id
     @GetMapping("/transactions/{id}")
-    public Optional<MovimientoDinero> getMovimientoDineroById(@PathVariable("id") long id){
+    public Optional<Transaction> getMovimientoDineroById(@PathVariable("id") long id){
         return this.movimientoDineroService.getMovimientoDineroById(id);
     }
 
@@ -49,7 +45,7 @@ public class MovimientoDineroController {
     public void deleteMovimientoDinero(@PathVariable("id") long id) {movimientoDineroService.deleteMovimientoDinero(id);}
 
     @PutMapping(value = "/transactions/{id}")
-    public ResponseEntity<MovimientoDinero> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody MovimientoDinero movimientoDinero){
+    public ResponseEntity<Transaction> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody Transaction movimientoDinero){
         return this.movimientoDineroService.updateMovimientoDinero(transaction_id, movimientoDinero);
     }
 

@@ -2,9 +2,9 @@ package proyecto.sinergia.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import proyecto.sinergia.entities.MovimientoDinero;
+import proyecto.sinergia.entities.Transaction;
 
 @Repository
-public interface MovimientoDineroRepository extends JpaRepository<MovimientoDinero, Long> {
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
 }
