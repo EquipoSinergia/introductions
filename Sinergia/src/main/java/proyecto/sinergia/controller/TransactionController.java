@@ -39,13 +39,23 @@ public class TransactionController {
         return "redirect:/transactions";
     }
 
+    @GetMapping("/transactions/editar/{id}")
+    public String getTransactionById(@PathVariable("id") long id, Model model){
+        Transaction transaction = transactionService.getTransactionById(id);
+        model.addAttribute("transactions", transaction);
+        return "editar-transaction";
+    }
+
+    @PostMapping("transactions/actualizar/{id}")
+    public String updateTransaction(@PathVariable ("id") long id, Transaction transaction){
+        transactionService.updateTransaction(id, transaction);
+        return  "redirect:/transactions";
+    }
+
     /*
 
     //Metodo para listar Movimiento de dinero por su Id
-    @GetMapping("/transactions/{id}")
-    public Optional<Transaction> getMovimientoDineroById(@PathVariable("id") long id){
-        return this.movimientoDineroService.getMovimientoDineroById(id);
-    }
+
 
 
 

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nueva Transacción</title>
+</head>
+<body>
+<form th:action="@{/transactions/actualizar/{id} (id = ${id})}" method="post">
+    <label for="concepto">Concepto</label>
+    <input type="text" id="concepto" th:field="${transactions.conceptoMto}">
+    <label for="monto">Monto</label>
+    <input type="number" step="any" id="monto" th:field="${transactions.montoMto}">
+
+    <input type="submit" value="Actualizar Transaccion">
+
+</form>
+
+</body>
+</html>

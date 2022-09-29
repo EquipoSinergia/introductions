@@ -27,22 +27,18 @@ public class TransactionService {
         transactionRepository.save(newTransaction);
     }
 
-    public Optional<Transaction> getMovimientoDineroById(@PathVariable("id") long movimientoDineroId){
-        java.util.Optional<Transaction> optionalMovimientoDinero = transactionRepository.findById(movimientoDineroId);
-        if(((java.util.Optional<Transaction>) optionalMovimientoDinero).isPresent()) {
-            return Optional.of(optionalMovimientoDinero.get());
-        }else
-            return Optional.empty();
+    public Transaction getTransactionById(@PathVariable("id") long transactionId){
+        return transactionRepository.findById(transactionId).get();
     }
 
     public void deleteTransaction(@PathVariable("id") long transactionId){
         transactionRepository.deleteById(transactionId);
     }
 
-    public ResponseEntity<Transaction> updateMovimientoDinero(@PathVariable("id") long transaction_id, @RequestBody Transaction transaction){
-        Optional<Transaction> optionalMovimientoDinero = transactionRepository.findById(transaction_id);
-        if (optionalMovimientoDinero.isPresent()) {
-            Transaction updatedTransaction = optionalMovimientoDinero.get();
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable("id") long transaction_id, @RequestBody Transaction transaction){
+        Optional<Transaction> optionalTransaction = transactionRepository.findById(transaction_id);
+        if (optionalTransaction.isPresent()) {
+            Transaction updatedTransaction = optionalTransaction.get();
             updatedTransaction.setConceptoMto(transaction.getConceptoMto());
             updatedTransaction.setMontoMto(transaction.getMontoMto());
             transactionRepository.save(updatedTransaction);
