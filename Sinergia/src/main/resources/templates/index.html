@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="//www.thymeleaf.org">
+<html lang="en" xmlns:th="//www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="../static/css/styles.css">
-  <title>sistema de gestion</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+     <link rel="stylesheet" href="/css/styles.css">
+    <title>sistema de gestion</title>
+
 
 </head>
 <body>
-<div class="grid-container">
-  <div class="grid-item1"><H1>BIENVENIDO A NUESTRO SISTEMA DE GESTION</H1></div>
-</div>
 
-<article class="article_login-index">
-  <section class="section_login-index">
-    <h5>INICIA SESION</h5>
-    <form class="form_login" action="loguear.php" method="POST">
-      <input class="input_login-index" type="text" name="id_adm" placeholder="Ingresa tu usuario" required>
-      <input class="input_login-index" type="password" name="pas_adm" placeholder="Ingresa tu contrasena" required>
-      <input class="button_login-index" type="submit" name="login" value="Ingresa">
-    </form>
-    <a href="signup.php"><input class="button_login-index" type="submit" value="Registrate"></a>
-    <p><a href="#" target="_blank">Olvidaste tu contraseña</a></p>
-  </section>
-</article>
+    <div class="grid-container">
+        <div class="grid-item1"><H1>BIENVENIDO A NUESTRO SISTEMA DE GESTION</H1></div>
+        <div calss="grid-item2" sec:authorize="!isAuthenticated()">
+            <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-4 gap-3">Log in</a>
+        </div>
+        <div id="columna1">
+            <img src="https://uploadgerencie.com/imagenes/contabilidad.png"  width="200" height="150"><br><br>
+            <a class="btn btn-primary mb-5">ingresos y egresos</a><br>
+            <a class="btn btn-primary" href="/employees">usuarios</a><br><br>
+            <a class="btn btn-primary" href="/enterprises">empresas</a>
+        </div>
 
+        <div id="columna2"><h2>SISTEMA GESTION DE INGRESOS</h2></div>
+        <div id="columna3"><h2>SISTEMA GESTION DE USUARIOS</h2></div>
+        <div id="columna4"><h2>SISTEMA GESTION DE EMPRESAS</h2></div>
+    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
